@@ -1,0 +1,188 @@
+(base) deng@deng-Precision-7920-Tower:~/PIDNet$ conda activate pidnet
+(pidnet) deng@deng-Precision-7920-Tower:~/PIDNet$ python /home/deng/PIDNet/ac
+dc_project/acdc_finetune.py \
+    --data_path /home/deng/datasets/acdc_mmseg \
+    --save_dir /home/deng/PIDNet/checkpoints/acdc_finetune \
+    --batch_size 4 \
+    --lr 5e-4 \
+    --iters 40000 \
+    --warmup_iters 1500 \
+    --log_interval 100 \
+    --val_interval 2000 \
+    --checkpoint_interval 2000
+Using device: cuda
+
+Building PIDNet-S model...
+Loading pretrained weights from /home/deng/PIDNet/pretrained_models/cityscape
+s/PIDNet_S_Cityscapes_val.pt
+/home/deng/PIDNet/acdc_project/acdc_finetune.py:308: FutureWarning: You are u
+sing `torch.load` with `weights_only=False` (the current default value), whic
+h uses the default pickle module implicitly. It is possible to construct mali
+cious pickle data which will execute arbitrary code during unpickling (See ht
+tps://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for m
+ore details). In a future release, the default value for `weights_only` will
+be flipped to `True`. This limits the functions that could be executed during
+ unpickling. Arbitrary objects will no longer be allowed to be loaded via thi
+s mode unless they are explicitly allowlisted by the user via `torch.serializ
+ation.add_safe_globals`. We recommend you start setting `weights_only=True` f
+or any use case where you don't have full control of the loaded file. Please
+open an issue on GitHub for any issues related to this experimental feature.
+  pretrained = torch.load(args.pretrained, map_location='cpu')
+Loaded 479 parameters from pretrained model
+Model loaded successfully
+
+Loading ACDC dataset...
+Loading train set from /home/deng/datasets/acdc_mmseg/leftImg8bit/train
+ACDC train set: found 1600 samples
+Loading val set from /home/deng/datasets/acdc_mmseg/leftImg8bit/val
+ACDC val set: found 406 samples
+
+============================================================
+Training Configuration:
+  Model: PIDNet-S
+  Pretrained: /home/deng/PIDNet/pretrained_models/cityscapes/PIDNet_S_Citysca
+pes_val.pt
+  Data path: /home/deng/datasets/acdc_mmseg
+  Save dir: /home/deng/PIDNet/checkpoints/acdc_finetune
+  GPU: 0
+  LR schedule: Poly (power=0.9) + Warmup (1500 iters)
+  Initial LR: 0.0005
+  Total iters: 40000
+  Batch size: 4
+  Crop size: (512, 1024)
+  Weight decay: 0.01
+  Log interval: 100
+  Val interval: 2000
+  Checkpoint interval: 2000
+============================================================
+
+
+Starting training for 40000 iterations...
+Initial LR: 0.000000
+Log interval: 100 iters
+Val interval: 2000 iters
+Checkpoint interval: 2000 iters
+Iter 100/40000 | Loss: 0.8253 | Avg Loss: 1.4123 | LR: 0.000033 | Time: 14.0s
+Iter 200/40000 | Loss: 0.6707 | Avg Loss: 1.1002 | LR: 0.000067 | Time: 27.6s
+Iter 300/40000 | Loss: 0.3953 | Avg Loss: 0.9456 | LR: 0.000100 | Time: 40.4s
+Iter 400/40000 | Loss: 1.0081 | Avg Loss: 0.8502 | LR: 0.000133 | Time: 54.7s
+Iter 500/40000 | Loss: 0.2704 | Avg Loss: 0.7903 | LR: 0.000167 | Time: 69.1s
+Iter 600/40000 | Loss: 0.3075 | Avg Loss: 0.7503 | LR: 0.000200 | Time: 81.9s
+Iter 700/40000 | Loss: 0.9387 | Avg Loss: 0.7298 | LR: 0.000233 | Time: 95.3s
+Iter 800/40000 | Loss: 0.8177 | Avg Loss: 0.7100 | LR: 0.000267 | Time: 108.9
+s
+Iter 900/40000 | Loss: 0.3971 | Avg Loss: 0.6938 | LR: 0.000300 | Time: 122.4
+s
+Iter 1000/40000 | Loss: 0.5701 | Avg Loss: 0.6886 | LR: 0.000333 | Time: 134.
+8s
+Iter 1100/40000 | Loss: 0.6625 | Avg Loss: 0.6803 | LR: 0.000367 | Time: 147.
+9s
+Iter 1200/40000 | Loss: 0.4394 | Avg Loss: 0.6701 | LR: 0.000400 | Time: 159.
+8s
+Iter 1300/40000 | Loss: 0.7252 | Avg Loss: 0.6658 | LR: 0.000433 | Time: 173.
+8s
+Iter 1400/40000 | Loss: 0.3215 | Avg Loss: 0.6616 | LR: 0.000467 | Time: 187.
+0s
+Iter 1500/40000 | Loss: 0.3061 | Avg Loss: 0.6580 | LR: 0.000500 | Time: 199.
+4s
+Iter 1600/40000 | Loss: 0.2915 | Avg Loss: 0.6570 | LR: 0.000499 | Time: 212.
+0s
+Iter 1700/40000 | Loss: 0.7694 | Avg Loss: 0.6475 | LR: 0.000498 | Time: 225.
+6s
+Iter 1800/40000 | Loss: 0.3244 | Avg Loss: 0.6458 | LR: 0.000496 | Time: 238.
+8s
+Iter 1900/40000 | Loss: 0.3503 | Avg Loss: 0.6436 | LR: 0.000495 | Time: 251.
+8s
+Iter 2000/40000 | Loss: 0.2427 | Avg Loss: 0.6384 | LR: 0.000494 | Time: 264.
+6s
+
+=== Evaluating at iteration 2000 ===
+Val mIoU: 38.25%
+
+Per-class IoU:
+  road           : 86.06%
+  sidewalk       : 53.09%
+  building       : 72.65%
+  wall           : 20.05%
+  fence          : 21.26%
+  pole           : 38.04%
+  traffic light  : 41.52%
+  traffic sign   : 31.50%
+  vegetation     : 75.80%
+  terrain        : 25.53%
+  sky            : 89.90%
+  person         : 18.99%
+  car            : 67.63%
+  truck          : 17.16%
+  bus            : 11.60%
+  train          : 55.41%
+  bicycle        : 0.48%
+Best model saved! mIoU: 38.25%
+Checkpoint saved at iter 2000
+Iter 2100/40000 | Loss: 0.6320 | Avg Loss: 0.6366 | LR: 0.000493 | Time: 295.
+0s
+Iter 2200/40000 | Loss: 0.8846 | Avg Loss: 0.6312 | LR: 0.000492 | Time: 307.
+9s
+Iter 2300/40000 | Loss: 0.5357 | Avg Loss: 0.6270 | LR: 0.000491 | Time: 320.
+6s
+Iter 2400/40000 | Loss: 0.5296 | Avg Loss: 0.6233 | LR: 0.000489 | Time: 333.
+5s
+Iter 2500/40000 | Loss: 0.8652 | Avg Loss: 0.6189 | LR: 0.000488 | Time: 348.
+0s
+Iter 2600/40000 | Loss: 0.4769 | Avg Loss: 0.6169 | LR: 0.000487 | Time: 361.
+1s
+Iter 2700/40000 | Loss: 0.2261 | Avg Loss: 0.6119 | LR: 0.000486 | Time: 375.
+1s
+Iter 2800/40000 | Loss: 0.3536 | Avg Loss: 0.6082 | LR: 0.000485 | Time: 388.
+0s
+Iter 2900/40000 | Loss: 0.3120 | Avg Loss: 0.6055 | LR: 0.000484 | Time: 401.
+8s
+Iter 3000/40000 | Loss: 0.3129 | Avg Loss: 0.6024 | LR: 0.000482 | Time: 414.
+9s
+Iter 3100/40000 | Loss: 0.3154 | Avg Loss: 0.6007 | LR: 0.000481 | Time: 427.
+4s
+Iter 3200/40000 | Loss: 0.7862 | Avg Loss: 0.6008 | LR: 0.000480 | Time: 439.
+7s
+Iter 3300/40000 | Loss: 0.2773 | Avg Loss: 0.5993 | LR: 0.000479 | Time: 454.
+2s
+Iter 3400/40000 | Loss: 0.2294 | Avg Loss: 0.5966 | LR: 0.000478 | Time: 467.
+2s
+Iter 3500/40000 | Loss: 0.4533 | Avg Loss: 0.5910 | LR: 0.000477 | Time: 480.
+4s
+Iter 3600/40000 | Loss: 0.7307 | Avg Loss: 0.5874 | LR: 0.000475 | Time: 493.
+1s
+Iter 3700/40000 | Loss: 0.7542 | Avg Loss: 0.5846 | LR: 0.000474 | Time: 506.
+9s
+Iter 3800/40000 | Loss: 0.6093 | Avg Loss: 0.5810 | LR: 0.000473 | Time: 519.
+5s
+Iter 3900/40000 | Loss: 0.3077 | Avg Loss: 0.5797 | LR: 0.000472 | Time: 533.
+0s
+Iter 4000/40000 | Loss: 1.1966 | Avg Loss: 0.5772 | LR: 0.000471 | Time: 546.
+7s
+
+=== Evaluating at iteration 4000 ===
+Val mIoU: 38.02%
+
+Per-class IoU:
+  road           : 87.38%
+  sidewalk       : 58.83%
+  building       : 72.91%
+  wall           : 29.64%
+  fence          : 19.13%
+  pole           : 41.80%
+  traffic light  : 37.22%
+  traffic sign   : 31.22%
+  vegetation     : 77.73%
+  terrain        : 32.85%
+  sky            : 90.42%
+  person         : 24.08%
+  car            : 63.42%
+  truck          : 15.70%
+  bus            : 0.47%
+  train          : 36.86%
+  bicycle        : 2.64%
+Checkpoint saved at iter 4000
+Iter 4100/40000 | Loss: 0.9664 | Avg Loss: 0.5768 | LR: 0.000470 | Time: 575.
+9s
+
+* lr too high, interrupted

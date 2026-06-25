@@ -11,7 +11,7 @@ PRINT_FREQ: 10
 DATASET:
   DATASET: cityscapes
   ROOT: data/
-  TEST_SET: 'list/cityscapes/val.lst'
+  TEST_SET: list/cityscapes/val.lst
   TRAIN_SET: 'list/cityscapes/train.lst'
   NUM_CLASSES: 19
 MODEL:

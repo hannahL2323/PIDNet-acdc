@@ -56,7 +56,7 @@ def main():
     cudnn.enabled = config.CUDNN.ENABLED
 
     # build model
-    model = model = models.pidnet.get_seg_model(config, imgnet_pretrained=True)
+    model = model = models.pidnet.get_seg_model(config, imgnet_pretrained=False)
 
     if config.TEST.MODEL_FILE:
         model_state_file = config.TEST.MODEL_FILE
