@@ -263,7 +263,7 @@ def main():
                        help="Batch size for training")
     parser.add_argument("--iters", type=int, default=40000,
                        help="Total training iterations")
-    parser.add_argument("--lr", type=float, default=5e-4,
+    parser.add_argument("--lr", type=float, default=1e-3,
                        help="Initial learning rate")
     parser.add_argument("--crop_height", type=int, default=512,
                        help="Crop height for training")
